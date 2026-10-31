@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fidèle Togbédji ZOGBE | Data Science &amp; Machine Learning</title>
+<meta name="description" content="Fidèle Togbédji ZOGBE, engineering student in Computer Science and Telecommunications at EPAC, Benin. Data science and machine learning projects on telecom and infrastructure data.">
+<meta name="author" content="Fidèle Togbédji ZOGBE">
+<link rel="canonical" href="https://fidele-zogbe.github.io/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Fidèle Togbédji ZOGBE">
+<meta property="og:title" content="Fidèle Togbédji ZOGBE | Data Science &amp; Machine Learning">
+<meta property="og:description" content="Engineering student at EPAC, Benin. Data science and machine learning on telecom and infrastructure data.">
+<meta property="og:url" content="https://fidele-zogbe.github.io/">
+<meta property="og:image" content="https://fidele-zogbe.github.io/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b6b5a'/%3E%3Ctext x='32' y='43' font-size='28' font-family='Arial,sans-serif' font-weight='700' text-anchor='middle' fill='white'%3EFZ%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Sets the theme before the page paints, so there is no flash. -->
+<script>
+(function () {
+  var t = null;
+  try { t = localStorage.getItem("theme"); } catch (e) {}
+  if (t !== "light" && t !== "dark") {
+    t = window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+  document.documentElement.setAttribute("data-theme", t);
+})();
+</script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header" id="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="#top">Fidèle Togbédji ZOGBE</a>
+    <nav id="site-nav" aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="bar-actions">
+      <button class="chip-btn" id="theme-toggle" type="button">Dark</button>
+      <button class="chip-btn menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===== Intro ===== -->
+  <section class="hero wrap" id="top">
+    <div class="hero-text">
+      <p class="eyebrow">Data science &amp; machine learning</p>
+      <h1>Fidèle Togbédji ZOGBE</h1>
+      <p class="summary">Third-year engineering student in Computer Science and Telecommunications at EPAC, Benin. I work with Python and machine learning on telecom and infrastructure data.</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">View projects</a>
+        <a class="btn" href="https://github.com/fidele-zogbe" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/zogbe-togbedji-fid%C3%A8le" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <figure class="portrait">
+      <img src="assets/portrait.webp" width="900" height="900" alt="Portrait of Fidèle Togbédji ZOGBE" fetchpriority="high">
+    </figure>
+  </section>
+
+  <div class="wrap">
+    <dl class="facts">
+      <div><dt>Programme</dt><dd>Génie Informatique et Télécommunications</dd></div>
+      <div><dt>University</dt><dd>EPAC, Université d’Abomey-Calavi</dd></div>
+      <div><dt>Expected graduation</dt><dd>2029</dd></div>
+      <div><dt>Location</dt><dd>Benin</dd></div>
+    </dl>
+  </div>
+
+  <!-- ===== About ===== -->
+  <section id="about" class="wrap">
+    <h2>About</h2>
+    <div class="prose">
+      <p>I am a third-year student in Computer Science and Telecommunications at EPAC (École Polytechnique d’Abomey-Calavi). The programme covers cybersecurity, software engineering and telecommunications. Alongside it, I study data science and machine learning independently, through the DataCamp Associate Data Scientist track and personal projects.</p>
+      <p>My main project looks at mobile network coverage in Benin, using cell-tower and population data to identify underserved areas. I am also working on a telecom customer churn model. Next, I plan to work on crop disease detection, flood and rainfall prediction, and text classification for Fon and Yoruba.</p>
+    </div>
+  </section>
+
+  <!-- ===== Projects ===== -->
+  <section id="projects" class="wrap">
+    <h2>Projects</h2>
+
+    <h3 class="group">Data science</h3>
+    <div class="grid">
+      <article class="project">
+        <div class="project-head">
+          <h4>Predicting Mobile Network Coverage Gaps in Benin</h4>
+          <span class="status progress">In progress</span>
+        </div>
+        <p>Combines OpenCellID cell-tower data with population data to identify underserved areas in Benin and to suggest where infrastructure investment should go first.</p>
+        <ul class="tags"><li>Python</li><li>pandas</li><li>scikit-learn</li><li>folium</li><li>Plotly</li></ul>
+        <a class="link" href="https://github.com/fidele-zogbe" target="_blank" rel="noopener">Follow on GitHub <span aria-hidden="true">→</span></a>
+      </article>
+
+      <article class="project">
+        <div class="project-head">
+          <h4>Telecom Customer Churn Prediction</h4>
+          <span class="status progress">In progress</span>
+        </div>
+        <p>Predicts which customers are likely to leave a telecom operator, using the BigML churn dataset (3,333 customers, 20 features). Exploratory analysis, followed by a comparison of classification models.</p>
+        <ul class="tags"><li>Python</li><li>pandas</li><li>scikit-learn</li></ul>
+        <a class="link" href="https://github.com/fidele-zogbe" target="_blank" rel="noopener">Follow on GitHub <span aria-hidden="true">→</span></a>
+      </article>
+
+      <article class="project">
+        <div class="project-head">
+          <h4>Football Club Financial Analysis</h4>
+          <span class="status done">Completed</span>
+        </div>
+        <p>Analysis of 52 European football clubs from 2010 to 2026: revenue growth (CAGR), which metrics correlate most with profitability, and an object-oriented data-access class built on pandas.</p>
+        <ul class="tags"><li>Python</li><li>pandas</li><li>OOP</li></ul>
+        <a class="link" href="https://github.com/fidele-zogbe/Club_Financial" target="_blank" rel="noopener">View on GitHub <span aria-hidden="true">→</span></a>
+      </article>
+    </div>
+
+    <h3 class="group">Software</h3>
+    <div class="grid">
+      <article class="project">
+        <div class="project-head">
+          <h4>Advanced Calculator</h4>
+          <span class="status progress">In progress</span>
+        </div>
+        <p>A desktop calculator in Python modelled on the Ubuntu calculator, built mode by mode (basic, advanced, programming).</p>
+        <ul class="tags"><li>Python</li><li>OOP</li></ul>
+        <a class="link" href="https://github.com/fidele-zogbe/Advanced_Calculator" target="_blank" rel="noopener">View on GitHub <span aria-hidden="true">→</span></a>
+      </article>
+
+      <article class="project">
+        <div class="project-head">
+          <h4>Space Shooter</h4>
+          <span class="status done">Completed</span>
+        </div>
+        <p>An arcade space shooter game written in Python.</p>
+        <ul class="tags"><li>Python</li><li>Game development</li></ul>
+        <a class="link" href="https://github.com/fidele-zogbe/Space-Shooter" target="_blank" rel="noopener">View on GitHub <span aria-hidden="true">→</span></a>
+      </article>
+
+      <article class="project">
+        <div class="project-head">
+          <h4>Vampire Survivor</h4>
+          <span class="status done">Completed</span>
+        </div>
+        <p>A survivor-style action game written in Python.</p>
+        <ul class="tags"><li>Python</li><li>Game development</li></ul>
+        <a class="link" href="https://github.com/fidele-zogbe/Vampire-Survivor" target="_blank" rel="noopener">View on GitHub <span aria-hidden="true">→</span></a>
+      </article>
+    </div>
+
+    <h3 class="group">Planned</h3>
+    <ul class="planned">
+      <li><strong>Crop disease detection</strong><span>Image classification of plant diseases.</span></li>
+      <li><strong>Flood and rainfall prediction</strong><span>Forecasting models using rainfall data.</span></li>
+      <li><strong>Fon and Yoruba text classification</strong><span>NLP for local-language text.</span></li>
+    </ul>
+
+    <div id="more-repos" hidden>
+      <h3 class="group">Other repositories</h3>
+      <p class="live">Updated automatically from my GitHub account.</p>
+      <div id="repo-grid" class="repos"></div>
+    </div>
+  </section>
+
+  <!-- ===== Skills ===== -->
+  <section id="skills" class="wrap">
+    <h2>Skills</h2>
+    <dl class="skills">
+      <div><dt>Data and machine learning</dt><dd>Python, pandas, NumPy, Matplotlib, SciPy, scikit-learn</dd></div>
+      <div><dt>Programming</dt><dd>Python (object-oriented), C, C++, web scraping, game development</dd></div>
+      <div><dt>Tools</dt><dd>Git and GitHub, Linux, VS Code, Google Colab</dd></div>
+      <div><dt>Currently learning</dt><dd>SQL, JavaScript</dd></div>
+      <div><dt>Languages</dt><dd>French, English, Mandarin (HSK 1)</dd></div>
+    </dl>
+  </section>
+
+  <!-- ===== Education ===== -->
+  <section id="education" class="wrap">
+    <h2>Education</h2>
+    <ol class="timeline">
+      <li>
+        <span class="date">2024 – 2029 (expected)</span>
+        <h3>Engineering degree, Génie Informatique et Télécommunications</h3>
+        <p>EPAC, Université d’Abomey-Calavi. Currently in third year. Coursework covers cybersecurity, software engineering and telecommunications.</p>
+      </li>
+      <li>
+        <span class="date">Ongoing</span>
+        <h3>Independent data science study</h3>
+        <p>DataCamp Associate Data Scientist track, plus personal projects on GitHub and Kaggle.</p>
+      </li>
+      <li>
+        <span class="date">2024</span>
+        <h3>Baccalauréat, Série D (Biology-Geology)</h3>
+        <p>CEG 4 Bohicon. Mention Très Bien, 16.86/20, with 20/20 in mathematics.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section id="contact" class="wrap">
+    <h2>Contact</h2>
+    <p class="prose">I am open to internships, collaborations and conversations about data science. Email is the best way to reach me.</p>
+    <div class="cta">
+      <a class="btn primary" href="mailto:togbedjifidele@gmail.com">Email me</a>
+      <button class="btn" id="copy-mail" type="button">Copy email address</button>
+      <a class="btn" href="https://www.linkedin.com/in/zogbe-togbedji-fid%C3%A8le" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/fidele-zogbe" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://www.kaggle.com/zogbetogbedjifidle" target="_blank" rel="noopener">Kaggle</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <p>© <span id="year">2026</span> Fidèle Togbédji ZOGBE</p>
+</footer>
+
+<script src="js/script.js" defer></script>
+</body>
+</html>
