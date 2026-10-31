@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fidèle Togbédji ZOGBE — CV</title>
+<style>
+  @font-face { font-family: "Inter"; font-weight: 400; src: url("fonts/inter-latin-400-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Inter"; font-weight: 500; src: url("fonts/inter-latin-500-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Inter"; font-weight: 600; src: url("fonts/inter-latin-600-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Inter"; font-weight: 700; src: url("fonts/inter-latin-700-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Space Grotesk"; font-weight: 500; src: url("fonts/space-grotesk-latin-500-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Space Grotesk"; font-weight: 600; src: url("fonts/space-grotesk-latin-600-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Space Grotesk"; font-weight: 700; src: url("fonts/space-grotesk-latin-700-normal.woff2") format("woff2"); }
+
+  :root {
+    --ink: #121514;
+    --ink-2: #45494a;
+    --ink-3: #6b6e68;
+    --sage: #5f734b;
+    --sage-light: #93a97a;
+    --sage-pale: #e9efe2;
+    --line: #d9ddd3;
+    --side: #0f1311;
+  }
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 210mm; height: 297mm; }
+  body {
+    font-family: "Inter", sans-serif;
+    font-size: 8.6pt;
+    line-height: 1.45;
+    color: var(--ink);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  a { color: inherit; text-decoration: none; }
+  .page { display: grid; grid-template-columns: 69mm 1fr; width: 210mm; height: 297mm; overflow: hidden; }
+
+  /* ------------------------------------------------------------ sidebar */
+  aside {
+    background: var(--side);
+    color: #d8d8d1;
+    padding: 13mm 7.5mm 10mm 8mm;
+    position: relative;
+    display: flex; flex-direction: column;
+  }
+  aside::before { /* subtle grid, echoing the website */
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size: 7mm 7mm;
+  }
+  aside > * { position: relative; }
+  .photo {
+    width: 40mm; height: 40mm; border-radius: 9mm; overflow: hidden;
+    border: 1.2mm solid var(--sage-light);
+    margin: 0 auto 7mm;
+  }
+  .photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; display: block; }
+
+  .s-title {
+    font-family: "Space Grotesk", sans-serif; font-weight: 600;
+    font-size: 7.2pt; letter-spacing: .24em; text-transform: uppercase;
+    color: var(--sage-light);
+    display: flex; align-items: center; gap: 2.4mm;
+    margin: 6.5mm 0 3mm;
+  }
+  .s-title::after { content: ""; flex: 1; height: .25mm; background: rgba(255,255,255,.14); }
+  .s-title:first-of-type { margin-top: 0; }
+
+  .contact li { list-style: none; display: flex; gap: 2.6mm; align-items: flex-start; margin-bottom: 2.3mm; font-size: 8pt; line-height: 1.35; word-break: break-word; }
+  .contact .ic { flex: 0 0 4.2mm; height: 4.2mm; margin-top: .2mm; border-radius: 1.2mm; background: rgba(147,169,122,.16); display: grid; place-items: center; }
+  .contact svg { width: 2.7mm; height: 2.7mm; stroke: var(--sage-light); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  .contact b { display: block; font-weight: 500; color: #fff; }
+  .contact small { display: block; font-size: 6.6pt; color: rgba(216,216,209,.55); letter-spacing: .02em; }
+
+  .skill-group { margin-bottom: 3.2mm; }
+  .skill-group h4 { font-weight: 600; font-size: 7.6pt; color: #fff; margin-bottom: 1.5mm; }
+  .chips { display: flex; flex-wrap: wrap; gap: 1.2mm; }
+  .chip {
+    font-size: 6.9pt; padding: .7mm 2.1mm; border-radius: 10mm;
+    border: .25mm solid rgba(147,169,122,.5); color: #e6ebdf;
+  }
+  .chip.soft { border-style: dashed; color: rgba(230,235,223,.7); }
+
+  .lang { display: flex; justify-content: space-between; align-items: baseline; font-size: 8pt; margin-bottom: 1.9mm; }
+  .lang b { font-weight: 600; color: #fff; }
+  .lang span { color: rgba(216,216,209,.65); font-size: 7.1pt; }
+
+  .side-foot { margin-top: auto; font-size: 6.6pt; color: rgba(216,216,209,.45); line-height: 1.5; padding-top: 4mm; }
+
+  /* ------------------------------------------------------------ main */
+  main { padding: 13mm 11mm 9mm 10mm; display: flex; flex-direction: column; }
+  .head h1 {
+    font-family: "Space Grotesk", sans-serif; font-weight: 700;
+    font-size: 25pt; line-height: 1; letter-spacing: -.01em; text-transform: uppercase;
+  }
+  .head h1 span { color: var(--sage); }
+  .head .role {
+    margin-top: 2.6mm; font-family: "Space Grotesk", sans-serif; font-weight: 600;
+    font-size: 9pt; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-2);
+  }
+  .head .tag {
+    margin-top: 3.2mm; display: inline-flex; align-items: center; gap: 2mm;
+    background: var(--sage-pale); color: var(--sage); font-weight: 600; font-size: 7.2pt;
+    padding: 1.1mm 3.2mm; border-radius: 10mm;
+  }
+  .head .tag i { width: 1.9mm; height: 1.9mm; border-radius: 50%; background: var(--sage); display: block; }
+
+  .m-title {
+    font-family: "Space Grotesk", sans-serif; font-weight: 700;
+    font-size: 8.4pt; letter-spacing: .22em; text-transform: uppercase; color: var(--ink);
+    display: flex; align-items: center; gap: 3mm;
+    margin: 5.2mm 0 2.8mm;
+  }
+  .m-title::before { content: ""; width: 4mm; height: .7mm; background: var(--sage); border-radius: 1mm; }
+  .m-title::after { content: ""; flex: 1; height: .25mm; background: var(--line); }
+
+  .profile { font-size: 8.9pt; line-height: 1.55; color: var(--ink-2); }
+  .profile b { color: var(--ink); font-weight: 600; }
+
+  .entry { position: relative; padding-left: 4.6mm; margin-bottom: 3.4mm; }
+  .entry::before { content: ""; position: absolute; left: .4mm; top: 1.6mm; width: 1.7mm; height: 1.7mm; border-radius: 50%; background: var(--sage); }
+  .entry::after { content: ""; position: absolute; left: 1.15mm; top: 4mm; bottom: -3.2mm; width: .25mm; background: var(--line); }
+  .entry:last-child::after { display: none; }
+  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; }
+  .row h3 { font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 9.4pt; line-height: 1.25; }
+  .when { font-size: 7.4pt; font-weight: 600; color: var(--sage); white-space: nowrap; }
+  .where { font-size: 7.9pt; color: var(--ink-3); font-weight: 500; margin: .2mm 0 .9mm; }
+  .entry p { color: var(--ink-2); font-size: 8.3pt; line-height: 1.5; }
+
+  .pill {
+    display: inline-block; font-size: 6.2pt; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    padding: .55mm 2mm; border-radius: 10mm; vertical-align: 1pt; margin-left: 2mm;
+  }
+  .pill.done { background: var(--sage-pale); color: var(--sage); }
+  .pill.wip { background: #fbefd3; color: #8a5a07; }
+  .stack { margin-top: 1.1mm; font-size: 7.1pt; color: var(--ink-3); letter-spacing: .01em; }
+  .stack b { color: var(--sage); font-weight: 600; }
+
+  .planned { margin-top: 1mm; padding: 2.2mm 3.4mm; border: .25mm dashed #b8c4a8; border-radius: 2.4mm; font-size: 7.8pt; color: var(--ink-2); }
+  .planned b { font-family: "Space Grotesk", sans-serif; font-size: 6.6pt; letter-spacing: .16em; text-transform: uppercase; color: var(--sage); }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+  .card { border: .25mm solid var(--line); border-radius: 2.4mm; padding: 2.8mm 3.2mm; background: #fafbf8; }
+  .card h4 { font-family: "Space Grotesk", sans-serif; font-weight: 600; font-size: 8.4pt; margin-bottom: .6mm; }
+  .card p { font-size: 7.7pt; color: var(--ink-2); line-height: 1.45; }
+  .card .k { display: block; font-size: 6.4pt; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--sage); margin-bottom: .8mm; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ============================================================ SIDEBAR -->
+  <aside>
+    <div class="photo"><img src="photo.jpg" alt="Fidèle Togbédji ZOGBE"></div>
+
+    <div class="s-title">Contact</div>
+    <ul class="contact">
+      <li><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></span>
+        <span><a href="mailto:togbedjifidele@gmail.com"><b>togbedjifidele@gmail.com</b></a></span></li>
+      <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg></span>
+        <span><b>Abomey-Calavi, Benin</b></span></li>
+      <li><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.3 3.6 5.2 3.6 8.5s-1.2 6.2-3.6 8.5c-2.4-2.3-3.6-5.2-3.6-8.5S9.6 5.8 12 3.5z"/></svg></span>
+        <span><a href="https://fidele-zogbe.github.io"><b>fidele-zogbe.github.io</b></a><small>Portfolio website</small></span></li>
+      <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M9 19c-4 1.2-4-2-6-2.5M15 21v-3.2a2.8 2.8 0 0 0-.8-2.2c2.700-.3 5.500-1.300 5.500-6a4.700 4.700 0 0 0-1.300-3.300 4.400 4.400 0 0 0-.1-3.300s-1-.3-3.400 1.300a11.500 11.500 0 0 0-6 0C6.500 2.700 5.500 3 5.500 3a4.400 4.400 0 0 0-.1 3.300A4.700 4.700 0 0 0 4.100 9.600c0 4.700 2.800 5.700 5.500 6A2.800 2.800 0 0 0 8.800 17.800V21"/></svg></span>
+        <span><a href="https://github.com/fidele-zogbe"><b>github.com/fidele-zogbe</b></a></span></li>
+      <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M6.5 9.500v8M6.500 6.200v.1M11 17.500v-8M11 13c0-2.200 1.200-3.500 3-3.500s3 1.200 3 3.500v4.500"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg></span>
+        <span><a href="https://www.linkedin.com/in/zogbe-togbedji-fid%C3%A8le"><b>LinkedIn</b></a><small>zogbe-togbedji-fidèle</small></span></li>
+      <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M7 4v16M7 13.500l8-9.500M10.500 11l5.500 9"/></svg></span>
+        <span><a href="https://www.kaggle.com/zogbetogbedjifidle"><b>Kaggle</b></a><small>zogbetogbedjifidle</small></span></li>
+    </ul>
+
+    <div class="s-title">Skills</div>
+    <div class="skill-group">
+      <h4>Data &amp; AI</h4>
+      <div class="chips">
+        <span class="chip">Python</span><span class="chip">pandas</span><span class="chip">NumPy</span>
+        <span class="chip">Matplotlib</span><span class="chip">SciPy</span><span class="chip">scikit-learn</span>
+        <span class="chip">EDA</span><span class="chip">Feature engineering</span><span class="chip">Classification</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>Development</h4>
+      <div class="chips">
+        <span class="chip">Python (OOP)</span><span class="chip">C</span><span class="chip">C++</span>
+        <span class="chip">Web scraping</span><span class="chip">Game dev</span><span class="chip">Git &amp; GitHub</span>
+        <span class="chip">Linux</span><span class="chip">Google Colab</span><span class="chip">VS Code</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>Learning now</h4>
+      <div class="chips"><span class="chip soft">SQL</span><span class="chip soft">JavaScript</span></div>
+    </div>
+
+    <div class="s-title">Languages</div>
+    <div class="lang"><b>French</b><span>Fluent</span></div>
+    <div class="lang"><b>English</b><span>Fluent</span></div>
+    <div class="lang"><b>Mandarin</b><span>HSK 1 certificate</span></div>
+    <div class="lang"><b>Fon</b><span>Local language</span></div>
+
+    <div class="side-foot">References available on request.</div>
+  </aside>
+
+  <!-- ============================================================ MAIN -->
+  <main>
+    <div class="head">
+      <h1>Fidèle Togbédji <span>Zogbe</span></h1>
+      <div class="role">Data Science &amp; Machine Learning</div>
+      <div class="tag"><i></i> Seeking internships &amp; remote collaborations</div>
+    </div>
+
+    <div class="m-title">Profile</div>
+    <p class="profile">
+      Third-year <b>engineering student in Computer Science and Telecommunications</b> at EPAC, Benin.
+      I apply <b>Python and machine learning</b> to telecom and infrastructure data, aiming to solve real
+      infrastructure problems in Benin and West Africa. I publish my work on GitHub and Kaggle and study
+      data science independently alongside my degree.
+    </p>
+
+    <div class="m-title">Education</div>
+    <div class="entry">
+      <div class="row"><h3>Engineering degree — Génie Informatique et Télécommunications</h3><span class="when">2024 – 2029</span></div>
+      <div class="where">EPAC, Université d'Abomey-Calavi, Benin · third year (expected graduation 2029)</div>
+      <p>Coursework in cybersecurity, software engineering and telecommunications. Data science specialisation pursued independently, outside the curriculum.</p>
+    </div>
+    <div class="entry">
+      <div class="row"><h3>DataCamp — Associate Data Scientist track</h3><span class="when">Ongoing</span></div>
+      <div class="where">Self-directed learning</div>
+      <p>Python, pandas, NumPy, Matplotlib, SciPy and scikit-learn, applied in personal projects.</p>
+    </div>
+    <div class="entry">
+      <div class="row"><h3>Baccalauréat, Série D (Biology-Geology)</h3><span class="when">2024</span></div>
+      <div class="where">CEG 4 Bohicon, Benin</div>
+      <p><b style="font-weight:600;color:var(--ink)">Mention Très Bien</b> — 16.86/20 overall, with <b style="font-weight:600;color:var(--ink)">20/20 in Mathematics</b>.</p>
+    </div>
+
+    <div class="m-title">Projects</div>
+    <div class="entry">
+      <div class="row"><h3>Predicting Mobile Network Coverage Gaps in Benin<span class="pill wip">In progress</span></h3></div>
+      <p>Combines OpenCellID cell-tower data with population data to identify underserved areas and recommend where infrastructure investment should go first.</p>
+      <div class="stack"><b>Stack</b> · Python, pandas, scikit-learn, folium, Plotly, Google Colab</div>
+    </div>
+    <div class="entry">
+      <div class="row"><h3>Telecom Customer Churn Prediction<span class="pill wip">In progress</span></h3></div>
+      <p>Predicts which customers are likely to leave an operator (BigML dataset: 3,333 customers, 20 features). Exploratory analysis followed by a comparison of classification models.</p>
+      <div class="stack"><b>Stack</b> · Python, pandas, scikit-learn, Matplotlib</div>
+    </div>
+    <div class="entry">
+      <div class="row"><h3>Football Club Financial Analysis<span class="pill done">Completed</span></h3></div>
+      <p>Analysis of 52 European clubs (2010–2026): revenue growth (CAGR), the metrics most correlated with profitability, and an object-oriented data-access class built on pandas.</p>
+      <div class="stack"><b>Stack</b> · Python, pandas, OOP · <a href="https://github.com/fidele-zogbe/Club_Financial">github.com/fidele-zogbe/Club_Financial</a></div>
+    </div>
+    <div class="entry">
+      <div class="row"><h3>Python Games &amp; Tools<span class="pill done">Published</span></h3></div>
+      <p><b style="font-weight:600;color:var(--ink)">Space Shooter</b> and <b style="font-weight:600;color:var(--ink)">Vampire Survivor</b> — two arcade games with enemy waves, collisions, scoring and upgrades. <b style="font-weight:600;color:var(--ink)">Advanced Calculator</b> (in progress) — a desktop calculator modelled on the Ubuntu one, built mode by mode.</p>
+      <div class="stack"><b>Stack</b> · Python, object-oriented design, game development</div>
+    </div>
+
+    <p class="planned"><b>Planned next</b> &nbsp;Crop disease detection · Flood &amp; rainfall prediction · Fon/Yoruba NLP</p>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,278 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-sage-50: #f3f6ef;
+  --color-sage-100: #e5ebdd;
+  --color-sage-200: #cbd8bd;
+  --color-sage-300: #aec096;
+  --color-sage-400: #93a97a;
+  --color-sage-500: #7a9162;
+  --color-sage-600: #5f734b;
+  --color-sage-700: #4a5a3c;
+  --color-sage-800: #3a4631;
+  --color-sage-900: #2c351f;
+
+  --color-ink-50: #f6f6f4;
+  --color-ink-100: #ecece8;
+  --color-ink-200: #d8d8d1;
+  --color-ink-400: #8b8d86;
+  --color-ink-600: #45494a;
+  --color-ink-800: #1b1f1d;
+  --color-ink-900: #121514;
+  --color-ink-950: #0a0c0b;
+}
+
+/* the light-mode grey was too pale for small text (about 3.3:1); darken it,
+   and keep the lighter grey for dark mode where it reads well */
+:root {
+  --color-ink-400: #6b6e68;
+}
+.dark {
+  --color-ink-400: #9a9c95;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: var(--font-sans);
+    background: #eeedea;
+    color: #121514;
+    -webkit-font-smoothing: antialiased;
+  }
+  .dark body {
+    background: #0a0c0b;
+    color: #ecece8;
+  }
+  ::selection {
+    background: var(--color-sage-400);
+    color: #fff;
+  }
+  section[id] {
+    scroll-margin-top: 96px;
+  }
+}
+
+@layer base {
+  /* visible keyboard focus everywhere */
+  :focus-visible {
+    outline: 2px solid var(--color-sage-500);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  a,
+  button,
+  input,
+  textarea,
+  [tabindex] {
+    outline-offset: 3px;
+  }
+}
+
+/* respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility label-xs {
+  font-family: var(--font-display);
+  font-size: 0.625rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+@utility surface {
+  background: #ffffff;
+  border: 1px solid rgba(18, 21, 20, 0.08);
+}
+
+.dark .surface {
+  background: #121514;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+@utility shell {
+  background: #f8f8f6;
+  border: 1px solid rgba(18, 21, 20, 0.07);
+}
+
+.dark .shell {
+  background: #0f1211;
+  border-color: rgba(255, 255, 255, 0.07);
+}
+
+.grid-lines {
+  background-image: linear-gradient(
+      to right,
+      rgba(18, 21, 20, 0.05) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(18, 21, 20, 0.05) 1px, transparent 1px);
+  background-size: 58px 58px;
+}
+.dark .grid-lines {
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.045) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.animate-floaty {
+  animation: floaty 6s ease-in-out infinite;
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: spin-slow 40s linear infinite;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* wobbly hover: a quick elastic wiggle, used on footer buttons */
+@keyframes wobble {
+  0% { transform: rotate(0) scale(1); }
+  20% { transform: rotate(-2.2deg) scale(1.04); }
+  40% { transform: rotate(1.8deg) scale(1.05); }
+  60% { transform: rotate(-1.1deg) scale(1.03); }
+  80% { transform: rotate(0.6deg) scale(1.02); }
+  100% { transform: rotate(0) scale(1.02); }
+}
+.wobble-hover:hover {
+  animation: wobble 0.7s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+/* giant outlined name at the bottom of the footer */
+.footer-wordmark {
+  display: inline-block;
+  font-size: clamp(5rem, 24vw, 21rem);
+  line-height: 0.8;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--f-stroke);
+  background: linear-gradient(to bottom, var(--f-stroke), transparent 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  transform: translateY(14%);
+}
+
+/* reading-progress bar under the header */
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 60;
+  height: 3px;
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--color-sage-400), var(--color-sage-600));
+  transform: scaleX(var(--p, 0));
+  pointer-events: none;
+}
+
+/* ---- page theme that cannot be overridden by an embedding page's reset ----
+   (unlayered on purpose: Tailwind's @layer base loses to any unlayered body rule) */
+html { background: #eeedea; }
+html.dark { background: #0a0c0b; color-scheme: dark; }
+html body { background: #eeedea; color: #121514; }
+html.dark body { background: #0a0c0b; color: #ecece8; }
+
+/* ---- footer follows the theme: light in light mode, dark in dark mode ---- */
+.footer-theme {
+  --f-bg: #e6ece0;
+  --f-strong: #121514;
+  --f-body: rgba(18, 21, 20, 0.7);
+  --f-mute: rgba(18, 21, 20, 0.55);
+  --f-line: rgba(18, 21, 20, 0.12);
+  --f-soft: rgba(255, 255, 255, 0.55);
+  --f-ring: rgba(18, 21, 20, 0.13);
+  --f-accent: #121514;
+  --f-on-accent: #ffffff;
+  --f-accent-hover: #5f734b;
+  --f-accent-text: #4a5a3c;
+  --f-glow: rgba(122, 145, 98, 0.35);
+  --f-grid: rgba(18, 21, 20, 0.055);
+  --f-stroke: rgba(74, 90, 60, 0.3);
+  --f-icon-bg: rgba(18, 21, 20, 0.07);
+  background-color: var(--f-bg);
+  color: var(--f-body);
+}
+.dark .footer-theme {
+  --f-bg: #0a0c0b;
+  --f-strong: #ffffff;
+  --f-body: rgba(255, 255, 255, 0.65);
+  --f-mute: rgba(255, 255, 255, 0.45);
+  --f-line: rgba(255, 255, 255, 0.1);
+  --f-soft: rgba(255, 255, 255, 0.05);
+  --f-ring: rgba(255, 255, 255, 0.12);
+  --f-accent: #93a97a;
+  --f-on-accent: #0a0c0b;
+  --f-accent-hover: #aec096;
+  --f-accent-text: #aec096;
+  --f-glow: rgba(122, 145, 98, 0.2);
+  --f-grid: rgba(255, 255, 255, 0.045);
+  --f-stroke: rgba(174, 192, 150, 0.22);
+  --f-icon-bg: rgba(255, 255, 255, 0.1);
+}
+.footer-theme .grid-lines {
+  background-image: linear-gradient(to right, var(--f-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--f-grid) 1px, transparent 1px);
+}

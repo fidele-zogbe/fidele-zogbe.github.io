@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fidele-zogbe.github.io/sitemap.xml
