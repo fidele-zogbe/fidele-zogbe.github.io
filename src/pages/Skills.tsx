@@ -73,7 +73,7 @@ export default function Skills() {
             {[
               ["pandas", "Cleaning, joining and reshaping datasets"],
               ["scikit-learn", "Classification models and model comparison"],
-              ["Matplotlib", "Making the pattern in the data visible"],
+              ["Matplotlib and seaborn", "Making the pattern in the data visible"],
               ["Git and GitHub", "Every project, documented and public"],
               ["Linux", "Daily environment and the command line"],
             ].map(([tool, use]) => (

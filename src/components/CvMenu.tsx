@@ -89,7 +89,7 @@ export default function CvMenu({
                 <span className="label-xs grid h-7 w-9 place-items-center rounded-md bg-black/5 dark:bg-white/10">
                   {o.code}
                 </span>
-                <span className="text-[13px] font-medium">{o.label}</span>
+                <span data-no-translate className="text-[13px] font-medium">{o.label}</span>
               </span>
               <span className="label-xs opacity-60">PDF</span>
             </a>

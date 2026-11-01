@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { trL, useLang } from "@/lib/i18n";
 
 function upsertMeta(selector: string, attr: "name" | "property", key: string, content: string) {
   let el = document.head.querySelector<HTMLMetaElement>(selector);
@@ -11,7 +12,10 @@ function upsertMeta(selector: string, attr: "name" | "property", key: string, co
 }
 
 /** Gives every page its own title, description and link-preview metadata. */
-export function usePageMeta(title: string, description: string, path: string) {
+export function usePageMeta(titleEn: string, descriptionEn: string, path: string) {
+  const lang = useLang();
+  const title = trL(titleEn, lang);
+  const description = trL(descriptionEn, lang);
   useEffect(() => {
     document.title = title;
     upsertMeta('meta[name="description"]', "name", "description", description);

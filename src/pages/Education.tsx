@@ -27,7 +27,11 @@ export default function Education() {
               className="reveal relative pb-10 last:pb-0"
               style={{ transitionDelay: `${i * 80}ms` }}
             >
-              <span className="absolute top-1.5 -left-[37px] grid h-4 w-4 place-items-center rounded-full border-2 border-sage-500 bg-white dark:bg-ink-950" />
+              <span className="absolute top-1.5 -left-[37px] grid h-4 w-4 place-items-center rounded-full border-2 border-sage-500 bg-white dark:bg-ink-950">
+                {/* a dot inside the circle = already achieved */}
+                {e.done && <span className="h-1.5 w-1.5 rounded-full bg-sage-500" />}
+                <span className="sr-only">{e.done ? "Completed" : "In progress"}</span>
+              </span>
               <p className="label-xs text-sage-600 dark:text-sage-400">{e.period}</p>
               <h2 className="mt-2 font-display text-[15.5px] font-semibold">{e.title}</h2>
               <p className="mt-1 text-[13px] text-ink-400">{e.place}</p>

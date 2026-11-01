@@ -1,6 +1,8 @@
 export const PROFILE: {
   name: string;
   shortName: string;
+  givenNames: string;
+  familyName: string;
   initials: string;
   headline: string;
   welcome: string;
@@ -9,7 +11,6 @@ export const PROFILE: {
   university: string;
   graduation: string;
   location: string;
-  origin: string;
   email: string;
   githubUser: string;
   cv: string;
@@ -62,6 +63,13 @@ export const EDUCATION: {
   title: string;
   place: string;
   body: string;
+  /** true once it is achieved: the timeline shows a filled dot */
+  done?: boolean;
 }[];
 
 export const FEATURED: string[];
+
+export const SYSTEMS_TITLE: string;
+export const SYSTEMS_INTRO: string;
+export const SYSTEMS_OUTRO: string;
+export const SYSTEMS: { name: string; role: string; body: string; current?: boolean }[];

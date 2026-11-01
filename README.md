@@ -1,148 +1,215 @@
-# Fidèle Zogbe — portfolio
+# Fidèle Togbédji ZOGBE — portfolio website
 
-**Live website:** [fidele-zogbe.github.io](https://fidele-zogbe.github.io)
+Seven-page portfolio: Home, About, Projects, Skills, Process, Education, Contact.
 
-I built this portfolio to introduce myself as a computer science and
-telecommunications engineering student interested in data science and machine
-learning. It brings together my background, skills, projects, working process,
-education, and contact details in one place. The project is also a way for me
-to practise building and publishing a complete website, not just individual
-pages.
+Built with **React + Vite + Tailwind CSS**. The seven pages are React components
+rendered by a hash router (`#/home`, `#/about`, …), which keeps relative links
+working on GitHub Pages with no server configuration.
 
-## What I built
-
-The site has seven sections: Home, About, Projects, Skills, Process, Education,
-and Contact. The pages share a header, footer, visual style, and navigation, so
-the experience feels like one site rather than seven separate pages.
-
-I chose React and TypeScript to build the interface from reusable components.
-Vite runs the development server and bundles the site, while Tailwind CSS is
-used for styling. Most of the portfolio content is kept separate from the page
-layouts, which makes it easier to update project and profile information
-without rewriting the interface.
-
-## How the code is organized
-
-```text
-.
-├── index.html                 # Browser entry point, SEO and social preview metadata
-├── package.json               # Dependencies and npm commands
-├── package-lock.json          # Exact dependency versions for repeatable installs
-├── vite.config.ts             # React, Tailwind, and single-file build configuration
-├── .github/workflows/
-│   └── deploy.yml              # Builds and deploys the site to GitHub Pages
-├── public/                    # CV PDFs, link-preview image, robots.txt, sitemap.xml
-├── scripts/
-│   ├── make_cv.py              # Creates the English and French CV PDFs
-│   └── cv/                     # CV source HTML, photo, and fonts
-└── src/
-    ├── main.tsx                # Mounts the React application
-    ├── App.tsx                 # Shared layout and page selection
-    ├── index.css               # Global styles
-    ├── pages/                  # One component for each portfolio section
-    ├── components/             # Shared header, footer, CV menu, icons, and UI
-    ├── hooks/                  # Shared interactive behavior
-    ├── lib/
-    │   ├── router.ts           # Reads the URL hash and selects a page
-    │   ├── pageMeta.ts         # Updates page titles and descriptions
-    │   └── github.ts           # Loads and caches public GitHub data
-    ├── js/
-    │   ├── script.js           # Profile, projects, skills, and other portfolio data
-    │   └── script.d.ts         # TypeScript types for that data
-    ├── assets/                 # Photos and project images used by the pages
-    └── utils/
-        └── cn.ts               # Helper for combining CSS class names
+```
+src/
+  App.tsx                 routes the seven pages, shared header + footer
+  js/script.js            ← ALL MY PROJECTS, LINKS AND PROFILE FACTS
+  js/script.d.ts          types for script.js
+  pages/
+    Home.tsx  About.tsx  Projects.tsx  Skills.tsx
+    Process.tsx  Education.tsx  Contact.tsx
+  components/
+    Header.tsx            same menu on every page, mobile menu
+    Footer.tsx            same footer on every page
+    ui.tsx  Icons.tsx
+  lib/
+    router.ts             hash router + page list
+    pageMeta.ts           per-page <title>, description and link previews
+    github.ts             live GitHub numbers (cache, refresh, fallback)
+  hooks/useReveal.ts      scroll animations and dark mode
+  assets/                 portrait and images (portrait.jpg = the photo on Home)
+public/
+  og-image.jpg            1200×630 link-preview image (WhatsApp, LinkedIn, X…)
 ```
 
-### How a page is displayed
-
-`src/main.tsx` mounts the app. `src/App.tsx` reads the current page and renders
-it inside the shared header and footer. Each page's layout is in its own file in
-`src/pages/`. The navigation changes the URL hash to values such as
-`#/projects`; `src/lib/router.ts` listens for that change and selects the
-matching page. Using hash-based navigation means GitHub Pages can serve the
-site as static files without a custom server or route configuration.
-
-I keep portfolio facts and lists in `src/js/script.js`. For example,
-`PROFILE` holds my name and contact details, `PROJECTS` describes my work, and
-`SKILLS`, `EDUCATION`, and `PROCESS_STEPS` provide content for their
-corresponding pages. The React components import the data they need. The
-companion `script.d.ts` file tells TypeScript what shapes those JavaScript
-objects have.
-
-### Live GitHub information
-
-The Home and Projects pages use `src/lib/github.ts` to request public profile
-and repository information from the GitHub API. The module refreshes the data
-while the site is open and stores the most recent successful response in the
-browser. If the API is unavailable, the site can show the saved response or
-built-in fallback data instead. This lets the portfolio remain useful even
-when the live request cannot be completed.
-
-### Contact form and CVs
-
-The Contact page sends form submissions through FormSubmit, so the portfolio
-does not need its own backend. The address comes from `PROFILE.email` in
-`src/js/script.js`; FormSubmit requires a one-time email confirmation before
-delivering submissions.
-
-The downloadable English and French CVs are in `public/`. Their source layouts
-are `scripts/cv/cv.html` and `scripts/cv/cv.fr.html`; `scripts/make_cv.py` uses
-Playwright and Chromium to generate the PDFs.
-
-## Run the site locally
-
-Install [Node.js](https://nodejs.org/) (the GitHub Actions workflow uses Node
-22), then open a terminal in the project directory and run:
+## Run it locally
 
 ```bash
 npm install
-npm run dev
+npm run dev        # http://localhost:5173
 ```
 
-Open the local URL printed by Vite, usually <http://localhost:5173>. To check
-the production build locally:
+## Build it
 
 ```bash
-npm run build
-npm run preview
+npm run build      # writes everything to dist/
+npm run preview    # serves dist/ locally to check the result
 ```
 
-Vite writes the production files to `dist/`. The preview command serves those
-files so I can check the built version before deployment.
+## Publish it on GitHub Pages
 
-## How publishing works
+The site lives in the repository `fidele-zogbe/fidele-zogbe.github.io`.
 
-This site is hosted at [fidele-zogbe.github.io](https://fidele-zogbe.github.io)
-from the [`fidele-zogbe.github.io` GitHub repository](https://github.com/fidele-zogbe/fidele-zogbe.github.io).
-GitHub Pages serves the static production build; it does not run a React server.
+**Automatic (recommended).** The file `.github/workflows/deploy.yml` builds and
+publishes the site every time you push to `main`. One-time setup:
+repository **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+Then simply:
 
-The workflow in `.github/workflows/deploy.yml` runs when I push to `main` or
-manually start it from the repository's **Actions** tab. It installs the
-dependencies with `npm ci`, runs `npm run build`, then publishes `dist/` using
-the GitHub Pages deployment action. The repository's Pages source must be set
-to **GitHub Actions** in **Settings → Pages**.
+```bash
+git add .
+git commit -m "Update portfolio"
+git push
+```
 
-## What this project has taught me
+The site is live at <https://fidele-zogbe.github.io> about a minute later
+(progress is shown in the repository's **Actions** tab).
 
-- **Separate content from presentation.** Keeping project and profile details
-  in one data module makes updates easier and keeps page components focused on
-  how information is displayed.
-- **Build for static hosting.** Hash-based navigation avoids depending on
-  server-side routes, which fits GitHub Pages' static hosting model.
-- **Plan for external services to fail.** GitHub API caching and fallback data
-  keep repository information available when a request fails or is rate-limited.
-- **Automate publishing.** A GitHub Actions workflow makes deployment repeatable:
-  a successful push to `main` builds and publishes the site.
-- **Treat a portfolio as a complete product.** In addition to page content, I
-  worked on responsive layouts, page metadata, social previews, downloadable
-  CVs, and a working contact path.
+**Manual.** Run `npm run build` and upload the contents of `dist/`
+(`index.html`, `og-image.jpg`, the CV, `robots.txt`) to the publishing branch.
 
-## Adapting this project
+## Edit my projects
 
-To make a version for your own GitHub Pages site, create a public repository
-named `<your-github-username>.github.io`, copy the project files, and set its
-Pages source to **GitHub Actions**. Then update the profile, projects, email,
-and social links in `src/js/script.js`; update the site and preview-image URLs
-in `index.html`; and change `GITHUB_USER` and its fallback information in
-`src/lib/github.ts`. The workflow deploys the site when you push to `main`.
+Everything about a project lives in **one list** in `src/js/script.js`:
+
+```js
+export const PROJECTS = [
+  {
+    title: "Telecom Customer Churn Prediction",
+    status: "In progress",          // "Completed" or "In progress"
+    group: "Data science",
+    tools: ["Python", "pandas", "scikit-learn"],
+    description: "…",
+    result: "…",
+    link: "https://github.com/fidele-zogbe/…",
+  },
+];
+```
+
+* **Add a project** — copy a block, paste it, change the values.
+* **Move a project to Completed** — change `"In progress"` to `"Completed"`.
+  The Projects page groups projects by this value, so nothing else to edit.
+* **Planned ideas** — the `PLANNED` list, same file.
+* **Skills** — the `SKILLS` list, same file.
+* **Process steps** — the `PROCESS_STEPS` list, same file.
+* **Education** — the `EDUCATION` list, same file.
+
+## Edit my links
+
+Also in `src/js/script.js`:
+
+```js
+export const PROFILE = { …, email: "togbedjifidele@gmail.com", … };
+
+export const SOCIALS = [
+  { label: "GitHub",    handle: "fidele-zogbe",          url: "https://github.com/fidele-zogbe", icon: "github" },
+  { label: "YouTube",   handle: null,                     url: null,                              icon: "youtube"  },
+];
+```
+
+`url: null` would render a “Link to be confirmed” chip on the Contact page and in
+the footer instead of a broken link. Four professional accounts are shown: GitHub, Kaggle, LinkedIn and YouTube
+(`@zogbefidele`). Instagram and Facebook are kept as commented lines in
+`script.js`: paste them back into the list to show them again.
+
+## Contact form
+
+The Contact page has a form with **name, email, company (optional), subject and
+message**. It posts to [FormSubmit](https://formsubmit.co), a free form backend,
+so there is no server to run:
+
+* the message arrives in my inbox as a normal email, with the sender's address as
+  `Reply-To`, so I can answer directly;
+* a hidden honeypot field (`_honey`) filters bots;
+* the browser blocks an empty or invalid submit before anything is sent;
+* if the form service is unreachable, the visitor sees an explanation and their
+  mail app opens with the message already written;
+* after a successful send the form is replaced by a confirmation, and a button
+  brings it back.
+
+**One-time activation:** the first submission sends a confirmation email to
+`togbedjifidele@gmail.com`. Click the link inside it once and every following
+message is delivered normally. Until then the form falls back to the visitor's
+mail app, so the page still works.
+
+To use a different service, edit `FORM_ENDPOINT` at the top of
+`src/pages/Contact.tsx`.
+
+## Live GitHub data
+
+Loaded from the public GitHub API:
+
+* `https://api.github.com/users/fidele-zogbe` → followers and repository count on Home
+* `https://api.github.com/users/fidele-zogbe/repos?per_page=100&sort=pushed` → the repository list on Projects
+
+Rules, all in `src/lib/github.ts`:
+
+* refreshes every **5 minutes** while the page is open;
+* saves the last successful result in `localStorage` (`fz-github-cache-v1`) and
+  shows it labelled “Saved from GitHub” when the API is unreachable;
+* falls back to a built-in list labelled “Built-in list (GitHub unavailable)”
+  when there is no cache either;
+* repositories that are forks are labelled **Fork**.
+
+To change the account, edit `GITHUB_USER` at the top of `src/lib/github.ts`.
+
+## Accessibility
+
+* “Skip to content” link at the top of every page.
+* Keyboard focus styles on every link, button and field.
+* The mobile menu closes on a link tap, a tap outside, on the hamburger button
+  again, or with the `Escape` key.
+* Every image has an `alt` text.
+* Buttons that change state announce it (`aria-live`), e.g. “Copied”.
+* All animations are disabled when the visitor prefers reduced motion.
+* Light and dark themes, set before the page renders (no flash) and remembered
+  in `localStorage`.
+
+## Deployment checklist
+
+Already handled in the code, checked before publishing:
+
+* [x] One `<h1>` per page, unique `<title>` and meta description per page.
+* [x] No absolute paths in the build, so the site works at
+      `https://fidele-zogbe.github.io` with no configuration.
+* [x] Old bookmarks (`#about`, `#projects`…) are redirected to the new pages.
+* [x] Clicking a menu item scrolls the new page back to the top.
+* [x] No horizontal scrolling from 360 px to 1920 px.
+* [x] All external links use `target="_blank"` + `rel="noreferrer"`.
+* [x] No console error, no failed request.
+* [x] `og:image`, `og:url` and `twitter:card` for link previews.
+
+## Your CV
+
+`public/Fidele-ZOGBE-CV.pdf` is the file behind the "Download CV" buttons. It is a one-page
+A4 design generated from `scripts/cv/cv.html` (text and layout) and `scripts/cv/photo.jpg`.
+Edit the HTML, then run:
+
+```bash
+pip install playwright && playwright install chromium
+python scripts/make_cv.py
+```
+
+## Change the portrait
+
+Replace `src/assets/portrait.jpg` with a new JPEG (about 900×1100 px or larger,
+under 200 KB) and run `npm run build` again. To refresh the link preview,
+also replace `public/og-image.jpg` (1200×630 px).
+
+## Before sharing
+
+* Contact form: send yourself one test message and click the confirmation link FormSubmit
+  emails you (once). Until then the form opens the visitor's mail app instead.
+* Repo links for the two in-progress data projects currently point to the GitHub profile.
+  When each repository exists, paste its URL into `PROJECTS` in `src/js/script.js`.
+* Add a precise result to each data project once the analysis is finished.
+
+## English / French
+
+The whole site exists in English and French. A small **FR / EN** button in the header
+switches language and the choice is remembered. Every sentence is written once in English
+in the code; the French lines live in `src/lib/fr.ts` as `"English text": "Texte français"`.
+**When you add or change a sentence, add or fix its line in `src/lib/fr.ts`** — without a
+line, the text simply stays in English.
+
+## The assistant (chat button, bottom right)
+
+`src/lib/chatbot.ts` is a small rule-based assistant. It runs in the browser (no server, no
+key) and answers only from `src/js/script.js` and a list of short facts in the same file,
+in English or French (it follows the language the visitor writes in). To teach it a new
+question, add a `faq(...)` line with the keywords and the English and French answers.

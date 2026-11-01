@@ -1,6 +1,6 @@
 import community from "@/assets/community.jpg";
 import interests from "@/assets/interests.jpg";
-import { PROFILE, SKILLS, CURRENTLY_LEARNING } from "@/js/script";
+import { PROFILE, SKILLS, CURRENTLY_LEARNING, SYSTEMS, SYSTEMS_TITLE, SYSTEMS_INTRO, SYSTEMS_OUTRO } from "@/js/script";
 import { usePageMeta } from "@/lib/pageMeta";
 import { ICONS } from "@/components/Icons";
 import { Page, SectionTop } from "@/components/ui";
@@ -37,8 +37,8 @@ export default function About() {
               Data Scientist track and personal projects published on GitHub. My
               main project looks at mobile network coverage in Benin, combining
               cell-tower data from OpenCellID with population data to find the
-              areas that are still underserved. I am also working on a telecom
-              customer churn model.
+              areas that are still underserved. I also built a telecom customer
+              churn model.
             </p>
             <p>
               Before data, I wrote games in Python — Space Shooter and Vampire
@@ -47,18 +47,26 @@ export default function About() {
             </p>
           </div>
 
-          {/* where I am based */}
-          <div className="reveal mt-10 grid gap-4 sm:grid-cols-3">
-            {[
-              { label: "Based in", value: PROFILE.location },
-              { label: "Originally from", value: PROFILE.origin },
-              { label: "Studying at", value: "EPAC, Abomey-Calavi" },
-            ].map((f) => (
-              <div key={f.label} className="surface rounded-2xl p-5">
-                <p className="label-xs text-ink-400">{f.label}</p>
-                <p className="mt-2 font-display text-[14px] font-semibold">{f.value}</p>
-              </div>
-            ))}
+          {/* operating systems */}
+          <div className="reveal mt-10">
+            <h2 className="font-display text-[15px] font-semibold">{SYSTEMS_TITLE}</h2>
+            <p className="mt-2 max-w-2xl text-[14px] leading-relaxed text-ink-600 dark:text-ink-400">{SYSTEMS_INTRO}</p>
+            <ol className="mt-5 grid gap-4 sm:grid-cols-3">
+              {SYSTEMS.map((o, i) => (
+                <li key={o.name} className="surface relative flex flex-col rounded-2xl p-5">
+                  <div className="flex items-center justify-between">
+                    <span className="label-xs text-ink-400">0{i + 1}</span>
+                    {o.current && (
+                      <span className="label-xs rounded-full bg-sage-500 px-2.5 py-1 text-white">Current</span>
+                    )}
+                  </div>
+                  <h3 className="mt-3 font-display text-[15px] font-semibold">{o.name}</h3>
+                  <p className="mt-1 text-[12.5px] font-medium text-sage-600 dark:text-sage-400">{o.role}</p>
+                  <p className="mt-3 text-[13px] leading-relaxed text-ink-600 dark:text-ink-400">{o.body}</p>
+                </li>
+              ))}
+            </ol>
+            <p className="mt-4 max-w-2xl text-[13.5px] leading-relaxed text-ink-600 dark:text-ink-400">{SYSTEMS_OUTRO}</p>
           </div>
 
           {/* community and teaching */}

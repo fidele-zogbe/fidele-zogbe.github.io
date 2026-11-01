@@ -35,7 +35,7 @@ export type GitHubState = {
 
 /** Used when the GitHub API is unreachable or rate-limited. */
 export const FALLBACK: GitHubState = {
-  user: { login: GITHUB_USER, followers: 75, publicRepos: 11, bio: null, location: "Abomey-Calavi" },
+  user: { login: GITHUB_USER, followers: 0, publicRepos: 11, bio: null, location: "Abomey-Calavi" },
   source: "fallback",
   updatedAt: null,
   repos: [

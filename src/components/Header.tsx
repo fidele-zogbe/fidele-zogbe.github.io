@@ -4,11 +4,13 @@ import { PROFILE } from "@/js/script";
 import { IconArrow } from "./Icons";
 import { RouteLink } from "./ui";
 import { cn } from "@/utils/cn";
+import { setLang, useLang } from "@/lib/i18n";
 
 type Props = { dark: boolean; onToggleDark: () => void };
 
 export default function Header({ dark, onToggleDark }: Props) {
   const route = useRoute();
+  const lang = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -45,7 +47,14 @@ export default function Header({ dark, onToggleDark }: Props) {
   useEffect(() => setOpen(false), [route]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-5">
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-5",
+        /* once the bar floats over the page, a strip of page colour closes the gap above it */
+        (scrolled || open) &&
+          "before:absolute before:inset-x-0 before:top-0 before:-z-10 before:h-5 before:bg-[#eeedea] sm:before:h-7 dark:before:bg-[#0a0c0b]"
+      )}
+    >
       <div
         className={cn(
           "mx-auto flex max-w-[1240px] items-center justify-between gap-4 rounded-2xl px-4 py-3 transition-all duration-500 sm:px-5",
@@ -89,6 +98,16 @@ export default function Header({ dark, onToggleDark }: Props) {
             <span className="label-xs">Let's talk</span>
             <IconArrow className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
           </RouteLink>
+          <button
+            type="button"
+            onClick={() => setLang(lang === "fr" ? "en" : "fr")}
+            data-no-translate
+            lang={lang === "fr" ? "en" : "fr"}
+            aria-label={lang === "fr" ? "Switch to English" : "Passer en français"}
+            className="label-xs grid h-9 min-w-9 place-items-center rounded-full border border-black/10 px-2.5 text-ink-600 transition-colors hover:border-sage-400 hover:text-sage-600 dark:border-white/15 dark:text-ink-200"
+          >
+            {lang === "fr" ? "EN" : "FR"}
+          </button>
           <button
             onClick={onToggleDark}
             aria-label={dark ? "Switch to light theme" : "Switch to dark theme"}

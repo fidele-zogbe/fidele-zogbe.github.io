@@ -39,10 +39,10 @@ export default function Home() {
         {/* intro */}
         <div className="reveal">
           <p className="font-display text-sm text-ink-400">Hello, I'm</p>
-          <h1 className="mt-2 font-display text-[clamp(2.5rem,7.6vw,5rem)] leading-[0.94] font-bold tracking-tight">
-            FIDÈLE
+          <h1 className="mt-2 font-display text-[clamp(2.2rem,6.2vw,4.4rem)] leading-[0.94] font-bold tracking-tight">
+            {PROFILE.givenNames}
             <br />
-            <span className="text-sage-500">ZOGBE</span>
+            <span className="text-sage-500">{PROFILE.familyName}</span>
           </h1>
           <p className="label-xs mt-4 text-ink-600 dark:text-ink-400">{PROFILE.headline}</p>
 
@@ -80,13 +80,13 @@ export default function Home() {
             <div className="mt-4 grid grid-cols-2 gap-4">
               <div>
                 <p className="font-display text-3xl font-bold tabular-nums">
-                  {gh.user?.followers ?? "—"}
+                  {gh.source === "fallback" ? "—" : gh.user?.followers ?? "—"}
                 </p>
                 <p className="mt-1 text-[12px] text-ink-400">Followers</p>
               </div>
               <div>
                 <p className="font-display text-3xl font-bold tabular-nums">
-                  {gh.user?.publicRepos ?? "—"}
+                  {gh.source === "fallback" ? "—" : gh.user?.publicRepos ?? "—"}
                 </p>
                 <p className="mt-1 text-[12px] text-ink-400">Public repositories</p>
               </div>
@@ -109,7 +109,7 @@ export default function Home() {
             <div className="animate-spin-slow h-[86%] w-[86%] rounded-full border border-dashed border-sage-400/40" />
           </div>
           <div className="absolute inset-0 -z-10 grid place-items-center">
-            <div className="h-[70%] w-[70%] rounded-full bg-sage-200/50 blur-2xl dark:bg-sage-500/10" />
+            <div className="h-[80%] w-[80%] rounded-full portrait-glow" />
           </div>
           <img
             src={portrait}
@@ -146,7 +146,7 @@ export default function Home() {
       {/* featured completed projects */}
       <div className="mt-14">
         <div className="mb-6 flex items-center justify-between gap-4 border-b border-black/10 pb-4 dark:border-white/10">
-          <p className="label-xs text-ink-400">Featured completed projects</p>
+          <p className="label-xs text-ink-400">Featured projects</p>
           <a
             href="#/projects"
             className="label-xs group flex items-center gap-2 text-ink-600 transition-colors hover:text-sage-600 dark:text-ink-200"
@@ -157,12 +157,14 @@ export default function Home() {
         </div>
 
         <div className="grid gap-5 sm:grid-cols-3">
-          {featured.map((p, i) => (
+          {featured.map((p, i) => {
+            /* projects with no repository yet point to the GitHub profile: keep those visitors on the Projects page instead */
+            const external = p!.link !== `https://github.com/${PROFILE.githubUser}`;
+            return (
             <a
               key={p!.title}
-              href={p!.link}
-              target="_blank"
-              rel="noreferrer"
+              href={external ? p!.link : "#/projects"}
+              {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
               className={cn(
                 "reveal group surface flex flex-col overflow-hidden rounded-2xl transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_28px_60px_-36px_rgba(0,0,0,.65)]"
               )}
@@ -174,7 +176,7 @@ export default function Home() {
                     src={IMAGES[p!.title]}
                     alt={`${p!.title} — project visual`}
                     loading="lazy"
-                    className="h-40 w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className={cn("h-40 w-full object-cover transition-transform duration-700 group-hover:scale-105", p!.title.startsWith("Football") && "object-[50%_70%]")}
                   />
                 ) : (
                   /* no screenshot yet: a plain cover, so no two cards share a picture */
@@ -212,7 +214,8 @@ export default function Home() {
                 </div>
               </div>
             </a>
-          ))}
+            );
+          })}
         </div>
       </div>
 

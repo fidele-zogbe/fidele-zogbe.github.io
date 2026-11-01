@@ -1,10 +1,17 @@
 import { PROJECTS, PLANNED } from "@/js/script";
 import { repoSourceLabel, useGitHub } from "@/lib/github";
 import { usePageMeta } from "@/lib/pageMeta";
+import { useLang } from "@/lib/i18n";
 import { IconArrow, IconGithub } from "@/components/Icons";
 import { Page, SectionTop, StatusPill } from "@/components/ui";
 
 export default function Projects() {
+  const lang = useLang();
+  /* 2026-10-29 -> "29 Oct 2026" / "29 oct. 2026" */
+  const fmtDate = (iso: string) => {
+    const d = new Date(`${iso}T00:00:00`);
+    return Number.isNaN(d.getTime()) ? iso : d.toLocaleDateString(lang === "fr" ? "fr-FR" : "en-GB", { day: "numeric", month: "short", year: "numeric" });
+  };
   usePageMeta(
     "Projects — Fidèle Togbédji ZOGBE",
     "Data science and software projects by Fidèle Togbédji ZOGBE: mobile network coverage gaps in Benin, telecom churn prediction, football club financial analysis and Python games.",
@@ -203,7 +210,7 @@ export default function Projects() {
                     {r.description}
                   </p>
                 )}
-                <p className="mt-2 text-[11px] text-ink-400">Last push: {r.pushed}</p>
+                <p className="mt-2 text-[11px] text-ink-400">Last push: {fmtDate(r.pushed)}</p>
               </div>
             </li>
           ))}

@@ -12,6 +12,9 @@
           var s = localStorage.getItem("fz-theme");
           var d = s ? s === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
           if (d) document.documentElement.classList.add("dark");
+          var l = localStorage.getItem("fz-lang");
+          if (!l) l = (navigator.language || "").toLowerCase().indexOf("fr") === 0 ? "fr" : "en";
+          document.documentElement.lang = l;
         } catch (e) {}
       })();
     </script>
@@ -48,7 +51,7 @@
         "jobTitle": "Data science and machine learning student",
         "alumniOf": { "@type": "CollegeOrUniversity", "name": "EPAC, Université d'Abomey-Calavi" },
         "address": { "@type": "PostalAddress", "addressLocality": "Abomey-Calavi", "addressCountry": "BJ" },
-        "knowsAbout": ["Data science", "Machine learning", "Python", "Telecommunications"],
+        "knowsAbout": ["Data science", "Machine learning", "Python", "Data analysis"],
         "sameAs": [
           "https://github.com/fidele-zogbe",
           "https://www.kaggle.com/zogbetogbedjifidle",

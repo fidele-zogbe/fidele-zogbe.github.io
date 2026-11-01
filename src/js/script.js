@@ -13,6 +13,8 @@
 export const PROFILE = {
   name: "Fidèle Togbédji ZOGBE",
   shortName: "Fidèle Zogbe",
+  givenNames: "Fidèle Togbédji",
+  familyName: "ZOGBE",
   initials: "FZ",
   headline: "Data Science & Machine Learning",
   welcome:
@@ -22,7 +24,6 @@ export const PROFILE = {
   university: "EPAC, Université d'Abomey-Calavi",
   graduation: "2029",
   location: "Abomey-Calavi, Benin",
-  origin: "Bohicon, Benin",
   email: "togbedjifidele@gmail.com",
   githubUser: "fidele-zogbe",
   cv: "Fidele-ZOGBE-CV.pdf", // English CV, file in /public — rebuild with scripts/make_cv.py
@@ -62,21 +63,11 @@ export const PROJECTS = [
     title: "Telecom Customer Churn Prediction",
     status: "In progress",
     group: "Data science",
-    tools: ["Python", "pandas", "scikit-learn"],
+    tools: ["Python", "pandas", "scikit-learn", "Matplotlib", "seaborn"],
     description:
       "Predicts which customers are likely to leave a telecom operator, using the BigML churn dataset (3,333 customers, 20 features). Exploratory analysis, followed by a comparison of classification models.",
-    result: "Ongoing — the model comparison is the focus of the work.",
+    result: "Ongoing: exploratory analysis done first, then a comparison of classification models. Results will be published here when it is finished.",
     link: "https://github.com/fidele-zogbe",
-  },
-  {
-    title: "Advanced Calculator",
-    status: "In progress",
-    group: "Software",
-    tools: ["Python", "OOP"],
-    description:
-      "A desktop calculator in Python modelled on the Ubuntu calculator, built mode by mode (basic, advanced, programming).",
-    result: "In development.",
-    link: "https://github.com/fidele-zogbe/Advanced_Calculator",
   },
   {
     title: "Football Club Financial Analysis",
@@ -88,6 +79,16 @@ export const PROJECTS = [
     result:
       "Revenue growth and the strongest correlations with profitability are documented in the repository.",
     link: "https://github.com/fidele-zogbe/Club_Financial",
+  },
+  {
+    title: "Advanced Calculator",
+    status: "Completed",
+    group: "Software",
+    tools: ["Python", "OOP"],
+    description:
+      "A desktop calculator in Python modelled on the Ubuntu calculator, built mode by mode (basic, advanced, programming).",
+    result: "Finished and published.",
+    link: "https://github.com/fidele-zogbe/Advanced_Calculator",
   },
   {
     title: "Space Shooter",
@@ -129,6 +130,7 @@ export const SKILLS = [
       "pandas",
       "NumPy",
       "Matplotlib",
+      "seaborn",
       "SciPy",
       "scikit-learn",
       "Exploratory data analysis",
@@ -147,7 +149,8 @@ export const SKILLS = [
       "Web scraping",
       "Game development",
       "Git and GitHub",
-      "Linux",
+      "Linux (Ubuntu, Kali)",
+      "Bash and zsh",
       "VS Code",
       "Google Colab",
     ],
@@ -155,19 +158,43 @@ export const SKILLS = [
   {
     title: "Languages",
     icon: "globe",
-    lead: "French and English every day, Mandarin in progress.",
+    lead: "French and English every day, plus HSK 1 Mandarin.",
     items: ["French", "English", "Mandarin (HSK 1)", "Fon"],
   },
 ];
 
 export const TOOLS = [
-  "Python", "pandas", "scikit-learn", "NumPy", "Matplotlib",
+  "Python", "pandas", "scikit-learn", "NumPy", "Matplotlib", "seaborn",
   "SciPy", "C++", "Git", "Linux", "Google Colab",
 ];
 
+/* About page: the operating systems I have worked on, in the order I used them.
+   `current: true` marks the one I use today. */
+export const SYSTEMS_TITLE = "From Windows to Ubuntu";
+export const SYSTEMS_INTRO = "I have worked on three operating systems, and each one taught me something different:";
+export const SYSTEMS = [
+  {
+    name: "Windows",
+    role: "Where I learned to program",
+    body: "Programming fundamentals: the foundation for everything I built afterwards.",
+  },
+  {
+    name: "Kali Linux",
+    role: "Months of command-line training",
+    body: "I spent months getting confident in bash and zsh, and picked up the basics of cybersecurity along the way.",
+  },
+  {
+    name: "Ubuntu",
+    role: "My system today",
+    body: "Where I do my data science work, and where I keep sharpening my terminal and shell skills.",
+    current: true,
+  },
+];
+export const SYSTEMS_OUTRO = "The result: I am comfortable on both Windows and Linux, and the terminal is part of how I work.";
+
 export const CURRENTLY_LEARNING = ["SQL", "JavaScript"];
 
-/* Process page — the steps of my churn project. */
+/* Process page — the method I follow on a data project (here: the telecom churn project). */
 export const PROCESS_STEPS = [
   {
     n: "01",
@@ -179,7 +206,7 @@ export const PROCESS_STEPS = [
     n: "02",
     title: "Exploratory data analysis",
     body: "Profile every column, check types and missing values, and look at the distributions and correlations before touching a model.",
-    detail: "pandas + Matplotlib: histograms, boxplots, correlation matrix.",
+    detail: "pandas + Matplotlib + seaborn: histograms, boxplots, correlation matrix.",
   },
   {
     n: "03",
@@ -216,28 +243,30 @@ export const EDUCATION = [
     body: "Currently in third year. Coursework covers cybersecurity, software engineering and telecommunications.",
   },
   {
-    period: "2024",
-    title: "Baccalauréat, Série D (Biology-Geology)",
-    place: "CEG 4 Bohicon",
-    body: "Mention Très Bien, 16.86/20, with 20/20 in mathematics.",
-  },
-  {
     period: "Ongoing",
     title: "DataCamp Associate Data Scientist track",
     place: "DataCamp",
     body: "Independent data science study, plus personal projects published on GitHub and Kaggle.",
   },
   {
-    period: "Ongoing",
-    title: "Mandarin learning",
-    place: "HSK 1",
-    body: "Self-study of Mandarin, at HSK 1 level, alongside my engineering coursework.",
+    period: "Certificate",
+    title: "Mandarin, HSK 1",
+    place: "Self-taught",
+    body: "HSK 1 certificate, earned through self-study alongside my engineering coursework.",
+    done: true,
+  },
+  {
+    period: "2024",
+    title: "Baccalauréat, Série D (Biology-Geology)",
+    place: "CEG 4 Bohicon",
+    body: "Mention Très Bien, 16.86/20, with 20/20 in mathematics.",
+    done: true,
   },
 ];
 
-/* Home page: the three featured completed projects. */
+/* Home page: the three featured projects. */
 export const FEATURED = [
   "Football Club Financial Analysis",
-  "Space Shooter",
-  "Vampire Survivor",
+  "Predicting Mobile Network Coverage Gaps in Benin",
+  "Telecom Customer Churn Prediction",
 ];

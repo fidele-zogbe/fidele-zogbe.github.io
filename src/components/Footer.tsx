@@ -38,7 +38,7 @@ export default function Footer() {
           <div aria-hidden="true" className="grid-lines absolute inset-0 -z-10 opacity-70" />
           <div
             aria-hidden="true"
-            className="absolute -top-40 left-1/2 -z-10 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-(color:--f-glow) blur-[110px]"
+            className="absolute -top-40 left-1/2 -z-10 h-[520px] w-[860px] max-w-full -translate-x-1/2 footer-glow"
           />
 
           {/* ---------------------------------------------------------- call to action */}
@@ -51,9 +51,8 @@ export default function Footer() {
               Open to internships &amp; remote collaborations
             </p>
 
-            <h2 className="mt-7 max-w-3xl font-display text-[clamp(2rem,5.4vw,4rem)] leading-[1.02] font-bold tracking-tight text-(color:--f-strong)">
-              Got a dataset, an internship
-              <br className="hidden sm:block" /> or an idea?{" "}
+            <h2 className="mt-7 max-w-4xl font-display text-[clamp(1.9rem,4.6vw,3.4rem)] leading-[1.02] font-bold tracking-tight text-(color:--f-strong)">
+              Got a dataset, an internship or an idea?{" "}
               <span className="text-(color:--f-accent-text)">Let's talk.</span>
             </h2>
 
@@ -88,22 +87,7 @@ export default function Footer() {
           {/* ---------------------------------------------------------- link columns */}
           <div className="grid gap-12 px-6 pt-14 sm:px-10 lg:grid-cols-[1.3fr_0.6fr_1fr] lg:px-14">
             <div>
-              <div className="flex items-center gap-3">
-                <span className="grid h-11 w-11 place-items-center rounded-2xl bg-sage-400 font-display text-sm font-bold text-ink-950">
-                  {PROFILE.initials}
-                </span>
-                <span>
-                  <span className="block font-display text-sm font-semibold tracking-[0.18em] text-(color:--f-strong) uppercase">
-                    {PROFILE.shortName}
-                  </span>
-                  <span className="label-xs mt-1 block text-(color:--f-mute)">{PROFILE.headline}</span>
-                </span>
-              </div>
-              <p className="mt-6 max-w-sm text-[14px] leading-relaxed text-(color:--f-body)">
-                {PROFILE.programme}, {PROFILE.university}. Building data science and machine
-                learning projects on telecom and infrastructure problems in Benin and West Africa.
-              </p>
-              <p className="label-xs mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-(color:--f-mute)">
+              <p className="label-xs flex flex-wrap items-center gap-x-3 gap-y-1 text-(color:--f-mute)">
                 <span>{PROFILE.location}</span>
                 {time && (
                   <>
@@ -175,7 +159,7 @@ export default function Footer() {
           {/* ---------------------------------------------------------- bottom bar */}
           <div className="flex flex-col items-center justify-between gap-4 border-t border-(color:--f-line) px-6 py-6 sm:flex-row sm:px-10 lg:px-14">
             <p className="text-[12px] text-(color:--f-mute)">
-              © {year} {PROFILE.name}. Built with React and Tailwind CSS.
+              © {year} {PROFILE.name}.
             </p>
             <button
               type="button"

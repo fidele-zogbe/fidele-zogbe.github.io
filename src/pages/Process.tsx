@@ -23,8 +23,8 @@ export default function Process() {
             <span className="text-sage-500">data project.</span>
           </h1>
           <p className="reveal mt-5 max-w-xl text-[15px] leading-relaxed text-ink-600 dark:text-ink-400">
-            These are the steps I am following on my telecom customer churn project
-            (still in progress), and the ones I plan to reuse on every dataset:
+            These are the steps I am following on my telecom customer churn project, and
+            the ones I use on every dataset:
             start from the question, understand the data, compare several models
             honestly, then publish a project someone else can actually run.
           </p>
@@ -75,7 +75,7 @@ export default function Process() {
           </div>
 
           <div className="reveal surface rounded-2xl p-6">
-            <p className="label-xs text-ink-400">The three models I compare</p>
+            <p className="label-xs text-ink-400">The three models I am comparing</p>
             <ul className="mt-4 space-y-3">
               {[
                 ["Logistic regression", "the simple baseline to beat"],
